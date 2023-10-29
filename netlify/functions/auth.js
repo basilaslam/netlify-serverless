@@ -12,9 +12,8 @@ app.use(cors())
 
 app.get('/.netlify/functions/auth/logout', (_, res) => {
 
-  res.clearCookie('role')
-  res.clearCookie('token');
-  return res.json({message: "successfully logged out"},{status: 200})
+  res.clearCookie('role').
+  clearCookie('token').status(200).json({message: "Successfully Logged Out"})
 });
 
 export const handler = serverless(app);
