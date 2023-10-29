@@ -8,10 +8,11 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 
-app.use(cors())
+app.use(cors(corsOptions))
 
-app.get('/.netlify/functions/auth/logout', (_, res) => {
+app.get('/.netlify/functions/auth/logout', (req, res) => {
 
+  console.log(req.cookies('role'))
   res.clearCookie('role').
   clearCookie('token').status(200).json({message: "Successfully Logged Out"})
 });
